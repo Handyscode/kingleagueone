@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,11 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', [PagesController::class, 'index'])->name('index');
+Route::middleware(['auth'])->group(function () {
+  Route::get('/', [PagesController::class, 'index'])->name('index');
+});
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 Route::get('/register', [PagesController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('registrasiPeserta.store');
 Route::get('/forgot-password', [PagesController::class, 'forgotPassword'])->name('forgotPassword');
 Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');

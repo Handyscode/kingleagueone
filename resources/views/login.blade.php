@@ -33,6 +33,11 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
+                  @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session()->get('success') }}
+                    </div>
+                  @endif
                   <form class="user">
                       <div class="form-group">
                         <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
