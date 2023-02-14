@@ -38,16 +38,32 @@
                       {{ session()->get('success') }}
                     </div>
                   @endif
-                  <form class="user">
+                  @if (session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                      {{ session()->get('error') }}
+                    </div>
+                  @endif
+                  <form action="" method="post" class="user">
+                    @csrf
                       <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror form-control-user" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." value="{{ old('email') }}">
+                        @error('email')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                       <div class="form-group">
-                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror form-control-user" id="exampleInputPassword" placeholder="Password">
+                        @error('password')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
-                      <a href="index.html" class="btn btn-danger btn-user btn-block">
+                      <button type="submit" class="btn btn-danger btn-user btn-block">
                         Login
-                      </a>
+                      </button>
                   </form>
                   <hr>
                   <div class="text-center">
