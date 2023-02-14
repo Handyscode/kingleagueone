@@ -25,11 +25,48 @@
                 <h6 class="m-0 font-weight-bold text-primary">Form Registrasi Peserta</h6>
               </div>
               <div class="card-body">
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-3">
-                    <label for="formFileSm" class="form-label">Small file input example</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                    <label for="photo" class="form-label">Photo</label>
+                    <input class="form-control form-control-sm" id="photo" type="file" name="photo">
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Nama Peserta</label>
+                    <input class="form-control form-control-sm" id="name" name="nama_peserta" type="text">
+                  </div>
+                  <div class="mb-3">
+                    <label for="asal_tim" class="form-label">Asal Tim</label>
+                    <input class="form-control form-control-sm" id="asal_tim" name="asal_tim" type="text">
+                  </div>
+                  <div class="mb-3">
+                    <label for="kategori_usia" class="form-label">Kategori Usia</label>
+                    <input class="form-control form-control-sm" id="kategori_usia" name="kategori_usia" type="text">
+                  </div>
+                  <div class="mb-3">
+                    <label for="no_punggung" class="form-label">No Punggung</label>
+                    <input class="form-control form-control-sm" id="no_punggung" name="no_punggung" type="text">
+                  </div>
+                  <div class="mb-3">
+                    <label for="posisi" class="form-label">Posisi</label>
+                    <input class="form-control form-control-sm" id="posisi" name="posisi" type="text">
+                  </div>
+                  <div class="mb-3">
+                    <label for="foto_kk" class="form-label">Foto KK</label>
+                    <input class="form-control form-control-sm" id="foto_kk" name="foto_kk" type="file">
+                  </div>
+                  <div class="mb-3">
+                    <label for="foto_akte" class="form-label">Foto Akte</label>
+                    <input class="form-control form-control-sm" id="foto_akte" name="foto_akte" type="file">
+                  </div>
+                  <div class="mb-3">
+                    <label for="foto_ijazah" class="form-label">Foto Ijazah</label>
+                    <input class="form-control form-control-sm" id="foto_ijazah" name="foto_ijazah" type="file">
+                  </div>
+                  <div class="actionBtn d-flex align-items-center justify-content-end">
+                    <button type="submit" class="btn btn-danger px-4">
+                      Upload
+                    </button>
                   </div>
                 </form>
               </div>

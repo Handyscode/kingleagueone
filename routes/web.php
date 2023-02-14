@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [PagesController::class, 'index'])->name('index');
+  Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -25,5 +26,4 @@ Route::middleware(['guest'])->group(function () {
   Route::get('/register', [PagesController::class, 'register'])->name('register');
   Route::post('/register', [RegisterController::class, 'store'])->name('registrasiPeserta.store');
   Route::get('/forgot-password', [PagesController::class, 'forgotPassword'])->name('forgotPassword');
-  Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
 });
