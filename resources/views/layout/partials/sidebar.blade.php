@@ -32,6 +32,11 @@
     <i class="fas fa-fw fa-users"></i>
     <span>Registrasi Peserta</span></a>
   </li>
+  <li class="nav-item {{ request()->routeIs('registrasiTim*') ? 'active' : '' }}">
+    <a class="nav-link" href="/registrasi-tim">
+    <i class="fa-solid fa-people-group"></i>
+    <span>Registrasi Tim</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

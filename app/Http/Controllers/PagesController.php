@@ -27,6 +27,10 @@ class PagesController extends Controller
         return view('registrasi-peserta');
     }
 
+    public function registrasiTim(){
+        return view('registrasi-tim');
+    }
+
     public function generatedQR(){
         return view('generated-qr');
     }

@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
   Route::post('/registrasi-peserta', [PesertaController::class, 'store'])->name('store');
   Route::get('/registrasi-peserta/generated-qr', [PagesController::class, 'generatedQR'])->name('registrasiPeserta.generatedQR');
+  Route::get('/registrasi-tim', [PagesController::class, 'registrasiTim'])->name('registrasiTim');
   Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
