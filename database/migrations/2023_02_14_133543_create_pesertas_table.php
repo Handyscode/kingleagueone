@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pesertas', function (Blueprint $table) {
-            $table->id();
+            $table->string('id_peserta', 10);
             $table->string('photo', 255);
             $table->string('nama', 50);
             $table->string('asal_tim', 50);
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('foto_kk', 255);
             $table->string('foto_akte', 255);
             $table->string('foto_ijazah', 255);
+            $table->date('tgl_daftar');
             $table->timestamps();
         });
     }

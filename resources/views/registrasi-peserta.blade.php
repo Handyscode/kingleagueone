@@ -29,39 +29,100 @@
                   @csrf
                   <div class="mb-3">
                     <label for="photo" class="form-label">Photo</label>
-                    <input class="form-control form-control-sm" id="photo" type="file" name="photo">
+                    <input class="form-control @error('photo') is-invalid @enderror form-control-sm" id="photo" type="file" name="photo" onchange="readURLPhoto(this);">
+                    @error('photo')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                    <div class="images mt-3">
+                      <p class="mb-0">Preview</p>
+                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="name" class="form-label">Nama Peserta</label>
-                    <input class="form-control form-control-sm" id="name" name="nama_peserta" type="text">
+                    <input class="form-control @error('nama_peserta') is-invalid @enderror form-control-sm" id="name" name="nama_peserta" type="text" value="{{ old('nama_peserta') }}">
+                    @error('nama_peserta')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="asal_tim" class="form-label">Asal Tim</label>
-                    <input class="form-control form-control-sm" id="asal_tim" name="asal_tim" type="text">
+                    <input class="form-control @error('asal_tim') is-invalid @enderror form-control-sm" id="asal_tim" name="asal_tim" type="text" value="{{ old('asal_tim') }}">
+                    @error('asal_tim')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="kategori_usia" class="form-label">Kategori Usia</label>
-                    <input class="form-control form-control-sm" id="kategori_usia" name="kategori_usia" type="text">
+                    <input class="form-control @error('kategori_usia') is-invalid @enderror form-control-sm" id="kategori_usia" name="kategori_usia" type="text" value="{{ old('kategori_usia') }}">
+                    @error('kategori_usia')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="no_punggung" class="form-label">No Punggung</label>
-                    <input class="form-control form-control-sm" id="no_punggung" name="no_punggung" type="text">
+                    <input class="form-control @error('no_punggung') is-invalid @enderror form-control-sm" id="no_punggung" name="no_punggung" type="text" value="{{ old('no_punggung') }}">
+                    @error('no_punggung')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="posisi" class="form-label">Posisi</label>
-                    <input class="form-control form-control-sm" id="posisi" name="posisi" type="text">
+                    <input class="form-control @error('posisi') is-invalid @enderror form-control-sm" id="posisi" name="posisi" type="text" value="{{ old('posisi') }}">
+                    @error('posisi')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <label for="foto_kk" class="form-label">Foto KK</label>
-                    <input class="form-control form-control-sm" id="foto_kk" name="foto_kk" type="file">
+                    <input class="form-control @error('foto_kk') is-invalid @enderror form-control-sm" id="foto_kk" name="foto_kk" type="file" onchange="readURLKK(this);">
+                    @error('foto_kk')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                    <div class="images mt-3">
+                      <p class="mb-0">Preview</p>
+                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="foto_akte" class="form-label">Foto Akte</label>
-                    <input class="form-control form-control-sm" id="foto_akte" name="foto_akte" type="file">
+                    <input class="form-control @error('foto_akte') is-invalid @enderror form-control-sm" id="foto_akte" name="foto_akte" type="file" onchange="readURLAkte(this);">
+                    @error('foto_akte')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                    <div class="images mt-3">
+                      <p class="mb-0">Preview</p>
+                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="foto_ijazah" class="form-label">Foto Ijazah</label>
-                    <input class="form-control form-control-sm" id="foto_ijazah" name="foto_ijazah" type="file">
+                    <input class="form-control @error('foto_ijazah') is-invalid @enderror form-control-sm" id="foto_ijazah" name="foto_ijazah" type="file" onchange="readURLIjazah(this);">
+                    @error('foto_ijazah')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                    <div class="images mt-3">
+                      <p class="mb-0">Preview</p>
+                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
+                    </div>
                   </div>
                   <div class="actionBtn d-flex align-items-center justify-content-end">
                     <button type="submit" class="btn btn-danger px-4">
@@ -84,28 +145,53 @@
 <a class="scroll-to-top rounded" href="#page-top">
   <i class="fas fa-angle-up"></i>
 </a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 
 @push('script')
-    
+  <script>
+    function readURLPhoto(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#photoPreview').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURLKK(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#KKPreview').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURLAkte(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#aktePreview').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURLIjazah(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#ijazahPreview').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
 @endpush

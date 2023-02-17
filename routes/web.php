@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PesertaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,9 @@ use App\Http\Controllers\LoginController;
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [PagesController::class, 'index'])->name('index');
   Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
+  Route::post('/registrasi-peserta', [PesertaController::class, 'store'])->name('store');
+  Route::get('/registrasi-peserta/generated-qr', [PagesController::class, 'generatedQR'])->name('registrasiPeserta.generatedQR');
+  Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['guest'])->group(function () {

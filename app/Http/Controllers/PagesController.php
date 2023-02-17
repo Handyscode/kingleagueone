@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Peserta;
 class PagesController extends Controller
 {
     public function index(){
-        return view('index');
+        $totalPeserta = count(Peserta::all());
+        return view('index', ['totalPeserta' => $totalPeserta]);
     }
 
     public function login(){
@@ -24,5 +25,9 @@ class PagesController extends Controller
 
     public function registrasiPeserta(){
         return view('registrasi-peserta');
+    }
+
+    public function generatedQR(){
+        return view('generated-qr');
     }
 }
