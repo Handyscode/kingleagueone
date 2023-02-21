@@ -19,6 +19,7 @@ use App\Http\Controllers\PesertaController;
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [PagesController::class, 'index'])->name('index');
   Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
+  Route::get('/peserta-profile/{id}', [PesertaController::class, 'pesertaProfile'])->name('pesertaProfile');
   Route::post('/registrasi-peserta', [PesertaController::class, 'store'])->name('store');
   Route::get('/registrasi-peserta/generated-qr', [PagesController::class, 'generatedQR'])->name('registrasiPeserta.generatedQR');
   Route::get('/registrasi-tim', [PagesController::class, 'registrasiTim'])->name('registrasiTim');

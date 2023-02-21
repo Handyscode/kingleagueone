@@ -20,6 +20,9 @@
 
 <body class="bg-gradient-danger">
   <div class="container">
+    <div class="image d-flex align-items-center justify-content-center mt-5">
+      <img src="{{ asset('img/kingleagueone_white.png') }}" alt="" width="150">
+    </div>
     <!-- Outer Row -->
     <div class="row justify-content-center">
       <div class="col-xl-10 col-lg-12 col-md-9">
