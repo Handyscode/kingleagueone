@@ -29,8 +29,13 @@
   <!-- Nav Item - Charts -->
   <li class="nav-item {{ request()->routeIs('registrasiPeserta*') ? 'active' : '' }}">
     <a class="nav-link" href="/registrasi-peserta">
-    <i class="fas fa-fw fa-users"></i>
+    <i class="fas fa-fw fa-plus"></i>
     <span>Registrasi Peserta</span></a>
+  </li>
+  <li class="nav-item {{ request()->routeIs('listPeserta*') ? 'active' : '' }}">
+    <a class="nav-link" href="/list-peserta">
+    <i class="fas fa-fw fa-users"></i>
+    <span>List Peserta</span></a>
   </li>
   {{-- <li class="nav-item {{ request()->routeIs('registrasiTim*') ? 'active' : '' }}">
     <a class="nav-link" href="/registrasi-tim">

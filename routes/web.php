@@ -19,7 +19,11 @@ use App\Http\Controllers\PesertaController;
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [PagesController::class, 'index'])->name('index');
   Route::get('/registrasi-peserta', [PagesController::class, 'registrasiPeserta'])->name('registrasiPeserta');
+  Route::get('/list-peserta', [PagesController::class, 'listPeserta'])->name('listPeserta');
+  Route::get('/list-peserta/edit-peserta/{id}', [PagesController::class, 'editPeserta'])->name('listPeserta.editPeserta')->middleware('user-access:admin');
   Route::get('/peserta-profile/{id}', [PesertaController::class, 'pesertaProfile'])->name('pesertaProfile');
+  Route::post('/list-peserta/delete-peserta/{id}', [PesertaController::class, 'delete'])->name('listPeserta.deletePeserta')->middleware('user-access:admin');
+  Route::post('/list-peserta/edit-peserta/{id}', [PesertaController::class, 'update'])->name('listPeserta.updatePeserta')->middleware('user-access:admin');
   Route::post('/registrasi-peserta', [PesertaController::class, 'store'])->name('store');
   Route::get('/registrasi-peserta/generated-qr', [PagesController::class, 'generatedQR'])->name('registrasiPeserta.generatedQR');
   Route::get('/registrasi-tim', [PagesController::class, 'registrasiTim'])->name('registrasiTim');
