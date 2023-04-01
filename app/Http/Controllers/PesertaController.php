@@ -26,13 +26,13 @@ class PesertaController extends Controller
       'foto_ijazah' => 'required|image',
     ]);
 
-    $photo = Storage::disk('public')->put('foto-peserta', $request->file('photo'));
-    $foto_kk = Storage::disk('public')->put('foto-kk', $request->file('foto_kk'));
-    $foto_akte = Storage::disk('public')->put('foto-akte', $request->file('foto_akte'));
-    $foto_ijazah = Storage::disk('public')->put('foto-ijazah', $request->file('foto_ijazah'));
+    // $photo = Storage::disk('public')->put('foto-peserta', $request->file('photo'));
+    // $foto_kk = Storage::disk('public')->put('foto-kk', $request->file('foto_kk'));
+    // $foto_akte = Storage::disk('public')->put('foto-akte', $request->file('foto_akte'));
+    // $foto_ijazah = Storage::disk('public')->put('foto-ijazah', $request->file('foto_ijazah'));
 
     $now = Carbon::now()->setTimezone('Asia/Jakarta')->isoFormat('Y-MM-D');
-    $lastPesertaID = DB::table('pesertas')->select('id_peserta')->where('tgl_daftar', $now)->orderBy('id_peserta', 'desc')->first();
+    $lastPesertaID = DB::table('pesertas')->select('id_peserta')->orderBy('id_peserta', 'desc')->first();
     // dd($lastPesertaID);
     if ($lastPesertaID == null) {
       $pesertaID = 'PST' . "001";
