@@ -4,7 +4,8 @@
   .h3,
   .card .card-header,
   .sticky-footer,
-  .navbar-nav{
+  .navbar-nav,
+  .actionBtn{
     display: none !important;
   }
 

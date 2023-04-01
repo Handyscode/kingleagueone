@@ -33,6 +33,7 @@
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('template/js/sb-admin-2.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @stack('script')
 </body>
 </html>

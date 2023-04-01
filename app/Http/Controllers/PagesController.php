@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Peserta;
+use Illuminate\Support\Facades\DB;
+
 class PagesController extends Controller
 {
     public function index(){
@@ -25,6 +27,17 @@ class PagesController extends Controller
 
     public function registrasiPeserta(){
         return view('registrasi-peserta');
+    }
+
+    public function listPeserta(){
+        $pesertas = DB::table('pesertas')->get();
+
+        return view('list-peserta', ['pesertas' => $pesertas]);
+    }
+
+    public function editPeserta($id){
+        $peserta = DB::table('pesertas')->where('id_peserta', $id)->first();
+        return view('edit-peserta', ['peserta' => $peserta]);
     }
 
     public function registrasiTim(){

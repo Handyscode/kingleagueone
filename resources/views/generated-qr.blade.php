@@ -34,6 +34,11 @@
                   <h5>QR Code Peserta</h5>
                 </div>
               </div>
+              <div class="card-footer">
+                <div class="actionBtn">
+                  <a href="/" class="btn btn-primary w-100 px-4">Oke</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -25,6 +25,6 @@ class UserAccess
             }
         }
 
-        return response()->json(['Anda tidak memiliki akses']);
+        return redirect()->route('index');
     }
 }
