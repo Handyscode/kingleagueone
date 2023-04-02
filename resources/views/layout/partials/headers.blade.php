@@ -7,7 +7,7 @@
   </button>
 
   <div class="headings">
-    <h4 class="mb-0 ms-4">Welcome to Kingleagueone</h4>
+    <h4 class="mb-0 ms-4">Welcome to PSSI League One</h4>
   </div>
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">

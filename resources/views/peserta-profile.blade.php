@@ -12,123 +12,120 @@
       @include('layout/partials/headers')
       <!-- Begin Page Content -->
       <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Profile Peserta</h1>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <!-- Basic Card Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Peserta Terdaftar</h6>
+        <div class="card shadow-none my-3">
+          <div class="card-body">
+            <div class="title">
+              <h1 class="h3 text-gray-800">Profile Peserta</h1>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <div class="images bg-white d-flex align-items-center justify-content-center">
+                  <img src="{{ asset('storage/'. $peserta->photo) }}" alt="" class="img-fluid">
+                </div>
               </div>
-              <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
-                  @csrf
-                  <div class="mb-3">
-                    <label for="photo" class="form-label">Photo</label>
-                    <input class="form-control @error('photo') is-invalid @enderror form-control-sm" id="photo" type="file" name="photo" onchange="readURLPhoto(this);" disabled>
-                    @error('photo')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+              <div class="col-7">
+                <ul class="list-unstyled">
+                  <li>
+                    <div class="row border-bottom py-3">
+                      <div class="col-5">
+                        <div class="label">
+                          <h6 class="mb-0">Nama Peserta</h6>
+                        </div>
                       </div>
-                    @enderror
-                    <div class="images mt-3">
-                      <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'. $peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
+                      <div class="col-7">
+                        <div class="content">
+                          <p class="mb-0">{{ $peserta->nama }}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Nama Peserta</label>
-                    <input class="form-control @error('nama_peserta') is-invalid @enderror form-control-sm" id="name" name="nama_peserta" type="text" value="{{ $peserta->nama }}" disabled>
-                    @error('nama_peserta')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                  </li>
+                  <li>
+                    <div class="row border-bottom py-3">
+                      <div class="col-5">
+                        <div class="label">
+                          <h6 class="mb-0">Asal Tim</h6>
+                        </div>
                       </div>
-                    @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label for="asal_tim" class="form-label">Asal Tim</label>
-                    <input class="form-control @error('asal_tim') is-invalid @enderror form-control-sm" id="asal_tim" name="asal_tim" type="text" value="{{ $peserta->asal_tim }}" disabled>
-                    @error('asal_tim')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                      <div class="col-7">
+                        <div class="content">
+                          <p class="mb-0">{{ $peserta->asal_tim }}</p>
+                        </div>
                       </div>
-                    @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label for="kategori_usia" class="form-label">Kategori Usia</label>
-                    <input class="form-control @error('kategori_usia') is-invalid @enderror form-control-sm" id="kategori_usia" name="kategori_usia" type="text" value="{{ $peserta->kategori_usia }}" disabled>
-                    @error('kategori_usia')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label for="no_punggung" class="form-label">No Punggung</label>
-                    <input class="form-control @error('no_punggung') is-invalid @enderror form-control-sm" id="no_punggung" name="no_punggung" type="text" value="{{ $peserta->no_punggung }}" disabled>
-                    @error('no_punggung')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label for="posisi" class="form-label">Posisi</label>
-                    <input class="form-control @error('posisi') is-invalid @enderror form-control-sm" id="posisi" name="posisi" type="text" value="{{ $peserta->posisi }}" disabled>
-                    @error('posisi')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label for="foto_kk" class="form-label">Foto KK</label>
-                    <input class="form-control @error('foto_kk') is-invalid @enderror form-control-sm" id="foto_kk" name="foto_kk" type="file" onchange="readURLKK(this);" disabled>
-                    @error('foto_kk')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                    <div class="images mt-3">
-                      <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
                     </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="foto_akte" class="form-label">Foto Akte</label>
-                    <input class="form-control @error('foto_akte') is-invalid @enderror form-control-sm" id="foto_akte" name="foto_akte" type="file" onchange="readURLAkte(this);" disabled>
-                    @error('foto_akte')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                  </li>
+                  <li>
+                    <div class="row border-bottom py-3">
+                      <div class="col-5">
+                        <div class="label">
+                          <h6 class="mb-0">Kategori Usia</h6>
+                        </div>
                       </div>
-                    @enderror
-                    <div class="images mt-3">
-                      <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="foto_ijazah" class="form-label">Foto Ijazah</label>
-                    <input class="form-control @error('foto_ijazah') is-invalid @enderror form-control-sm" id="foto_ijazah" name="foto_ijazah" type="file" onchange="readURLIjazah(this);" disabled>
-                    @error('foto_ijazah')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                      <div class="col-7">
+                        <div class="content">
+                          <p class="mb-0">{{ $peserta->kategori_usia }}</p>
+                        </div>
                       </div>
-                    @enderror
-                    <div class="images mt-3">
-                      <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
                     </div>
-                  </div>
-                </form>
+                  </li>
+                  <li>
+                    <div class="row border-bottom py-3">
+                      <div class="col-5">
+                        <div class="label">
+                          <h6 class="mb-0">Nomor Punggung</h6>
+                        </div>
+                      </div>
+                      <div class="col-7">
+                        <div class="content">
+                          <p class="mb-0">{{ $peserta->no_punggung }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row border-bottom py-3">
+                      <div class="col-5">
+                        <div class="label">
+                          <h6 class="mb-0">Posisi</h6>
+                        </div>
+                      </div>
+                      <div class="col-7">
+                        <div class="content">
+                          <p class="mb-0">{{ $peserta->posisi }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+        @if (Auth::user()->role == 'admin')
+          <div class="card shadow-none my-3">
+            <div class="card-body">
+              <div class="title">
+                <h1 class="h3 text-gray-800">Dokumen Peserta</h1>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="images bg-white d-flex align-items-center justify-content-center border">
+                    <img src="{{ asset('storage/'. $peserta->foto_kk) }}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="images bg-white d-flex align-items-center justify-content-center border">
+                    <img src="{{ asset('storage/'. $peserta->foto_akte) }}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="images bg-white d-flex align-items-center justify-content-center border">
+                    <img src="{{ asset('storage/'. $peserta->foto_ijazah) }}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endif
       </div>
       <!-- /.container-fluid -->
     </div>

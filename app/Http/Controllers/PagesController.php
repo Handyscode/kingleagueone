@@ -47,4 +47,8 @@ class PagesController extends Controller
     public function generatedQR(){
         return view('generated-qr');
     }
+
+    public function scanQR(){
+        return view('scan-qr');
+    }
 }
