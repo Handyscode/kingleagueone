@@ -56,7 +56,12 @@
                   </div>
                   <div class="mb-3">
                     <label for="asal_tim" class="form-label">Asal Tim</label>
-                    <input class="form-control @error('asal_tim') is-invalid @enderror form-control-sm" id="asal_tim" name="asal_tim" type="text" value="{{ $peserta->asal_tim }}">
+                    <select name="asal_tim" id="asal_tim" class="form-control @error('asal_tim') is-invalid @enderror form-control-sm">
+                      <option value="">--- Pilih Asal Tim Peserta ---</option>
+                      @foreach ($tims as $tim)
+                        <option value="{{ $tim->id_tim }}" {{ $peserta->id_tim == $tim->id_tim ? 'selected' : '' }}>{{ $tim->nama_tim }}</option>
+                      @endforeach
+                    </select>
                     @error('asal_tim')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -83,7 +88,12 @@
                   </div>
                   <div class="mb-3">
                     <label for="posisi" class="form-label">Posisi</label>
-                    <input class="form-control @error('posisi') is-invalid @enderror form-control-sm" id="posisi" name="posisi" type="text" value="{{ $peserta->posisi }}">
+                    <select name="posisi" id="posisi" class="form-control @error('posisi') is-invalid @enderror form-control-sm">
+                      <option value="">--- Pilih Posisi Peserta ---</option>
+                      @foreach ($posisis as $posisi)
+                          <option value="{{ $posisi->id_posisi }}" {{ $peserta->id_posisi == $posisi->id_posisi ? 'selected' : '' }}>{{ $posisi->nama_posisi . ' ' . '('.$posisi->kode_posisi.')' }}</option>
+                      @endforeach
+                    </select>
                     @error('posisi')
                       <div class="invalid-feedback">
                         {{ $message }}

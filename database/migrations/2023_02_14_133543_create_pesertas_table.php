@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pesertas', function (Blueprint $table) {
-            $table->string('id_peserta', 10);
+            $table->char('id_peserta', 6)->primary();
+            $table->string('id_tim', 10);
             $table->string('photo', 255);
             $table->string('nama', 50);
             $table->string('asal_tim', 50);
             $table->string('kategori_usia', 10);
             $table->string('no_punggung', 50);
-            $table->string('posisi', 50);
+            $table->string('id_posisi', 10);
             $table->string('foto_kk', 255);
             $table->string('foto_akte', 255);
             $table->string('foto_ijazah', 255);

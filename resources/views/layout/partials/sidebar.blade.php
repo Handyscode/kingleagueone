@@ -63,11 +63,42 @@
       </div>
     </div>
   </li>
-  {{-- <li class="nav-item {{ request()->routeIs('registrasiTim*') ? 'active' : '' }}">
+  
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Data Tim
+  </div>
+  <li class="nav-item {{ request()->routeIs('registrasiTim*') ? 'active' : '' }}">
     <a class="nav-link" href="/registrasi-tim">
-    <i class="fa-solid fa-people-group"></i>
+    <i class="fas fa-fw fa-plus"></i>
     <span>Registrasi Tim</span></a>
-  </li> --}}
+  </li>
+  <li class="nav-item {{ request()->routeIs('listTim*') ? 'active' : '' }}">
+    <a class="nav-link" href="/list-tim">
+    <i class="fa-solid fa-people-group"></i>
+    <span>List Tim</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Data Pertandingan
+  </div>
+  <li class="nav-item {{ request()->routeIs('jadwalPertandingan*') ? 'active' : '' }}">
+    <a class="nav-link" href="/jadwal-pertandingan">
+    <i class="fa-solid fa-calendar"></i>
+    <span>Jadwal Pertandingan</span></a>
+  </li>
+  <li class="nav-item {{ request()->routeIs('liveScore*') ? 'active' : '' }}">
+    <a class="nav-link" href="/live-score">
+    <i class="fa-solid fa-satellite-dish"></i>
+    <span>Live Score</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tims', function (Blueprint $table) {
-            $table->char('id_tim', 6)->primary();
-            $table->string('nama_tim');
-            $table->string('nama_pelatih');
-            $table->string('kategori_usia');
-            $table->integer('jumlah_pertandingan');
-            $table->integer('jumlah_poin');
-            $table->string('logo_tim');
+        Schema::create('jadwal_pertandingans', function (Blueprint $table) {
+            $table->char('id_pertandingan', 6)->primary();
+            $table->string('id_tim_home');
+            $table->string('id_tim_away');
+            $table->dateTime('tgl_pertandingan');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tims');
+        Schema::dropIfExists('jadwal_pertandingans');
     }
 };

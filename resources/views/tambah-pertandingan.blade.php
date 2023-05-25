@@ -14,7 +14,7 @@
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Registrasi Tim</h1>
+          <h1 class="h3 mb-0 text-gray-800">Tambah Pertandingan</h1>
         </div>
 
         <div class="row">
@@ -22,46 +22,43 @@
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Form Registrasi Tim</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Form Tambah Pertandingan</h6>
               </div>
               <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post">
                   @csrf
                   <div class="mb-3">
-                    <label for="logoTim" class="form-label">Logo Tim</label>
-                    <input class="form-control @error('logoTim') is-invalid @enderror form-control-sm" id="logoTim" type="file" name="logoTim" onchange="readURLPhoto(this);">
-                    @error('logoTim')
-                      <div class="invalid-feedback">
-                        {{ $message }}
-                      </div>
-                    @enderror
-                    <div class="images mt-3">
-                      <p class="mb-0">Preview</p>
-                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="logoPreview">
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Nama Tim</label>
-                    <input class="form-control @error('nama_tim') is-invalid @enderror form-control-sm" id="name" name="nama_tim" type="text" value="{{ old('nama_tim') }}">
-                    @error('nama_tim')
+                    <label for="name" class="form-label">Tim Home</label>
+                    <select name="tim_home" id="tim_home" class="form-control @error('tim_home') is-invalid @enderror form-control-sm">
+                      <option selected disabled>--- PILIH TIM HOME ---</option>
+                      @foreach ($tims as $tim)
+                        <option value="{{ $tim->id_tim }}">{{ $tim->nama_tim }}</option>
+                      @endforeach
+                    </select>
+                    @error('tim_home')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
                     @enderror
                   </div>
                   <div class="mb-3">
-                    <label for="name" class="form-label">Nama Pelatih / Coach</label>
-                    <input class="form-control @error('nama_pelatih') is-invalid @enderror form-control-sm" id="name" name="nama_pelatih" type="text" value="{{ old('nama_pelatih') }}">
-                    @error('nama_pelatih')
+                    <label for="name" class="form-label">Tim Away</label>
+                    <select name="tim_away" id="tim_away" class="form-control @error('tim_away') is-invalid @enderror form-control-sm">
+                      <option selected disabled>--- PILIH TIM AWAY ---</option>
+                      @foreach ($tims as $tim)
+                        <option value="{{ $tim->id_tim }}">{{ $tim->nama_tim }}</option>
+                      @endforeach
+                    </select>
+                    @error('tim_away')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
                     @enderror
                   </div>
                   <div class="mb-3">
-                    <label for="name" class="form-label">Kategori Usia</label>
-                    <input class="form-control @error('kategori_usia') is-invalid @enderror form-control-sm" id="name" name="kategori_usia" type="text" value="{{ old('kategori_usia') }}">
-                    @error('kategori_usia')
+                    <label for="name" class="form-label">Tanggal Pertandingan</label>
+                    <input type="datetime-local" name="tgl_pertandingan" id="tgl_pertandingan" class="form-control @error('tgl_pertandingan') is-invalid @enderror form-control-sm">
+                    @error('tgl_pertandingan')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
@@ -69,7 +66,7 @@
                   </div>
                   <div class="actionBtn d-flex align-items-center justify-content-end">
                     <button type="submit" class="btn btn-danger px-4">
-                      Upload
+                      Tambah
                     </button>
                   </div>
                 </form>

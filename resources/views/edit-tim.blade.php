@@ -14,7 +14,7 @@
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Registrasi Tim</h1>
+          <h1 class="h3 mb-0 text-gray-800">Edit Tim</h1>
         </div>
 
         <div class="row">
@@ -22,8 +22,13 @@
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Form Registrasi Tim</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Form Edit Tim</h6>
               </div>
+              @if (session('Error'))
+                <div class="alert alert-danger mt-3" role="alert">
+                  {{ session('Error') }}
+                </div>
+              @endif
               <div class="card-body">
                 <form action="" method="post" enctype="multipart/form-data">
                   @csrf
@@ -37,12 +42,12 @@
                     @enderror
                     <div class="images mt-3">
                       <p class="mb-0">Preview</p>
-                      <img src="http://placehold.it/75" alt="" class="img-preview img-fluid" width="75" id="logoPreview">
+                      <img src="{{ asset('storage/'.$tim->logo_tim) }}" alt="" class="img-preview img-fluid" width="75" id="logoPreview">
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="name" class="form-label">Nama Tim</label>
-                    <input class="form-control @error('nama_tim') is-invalid @enderror form-control-sm" id="name" name="nama_tim" type="text" value="{{ old('nama_tim') }}">
+                    <input class="form-control @error('nama_tim') is-invalid @enderror form-control-sm" id="name" name="nama_tim" type="text" value="{{ $tim->nama_tim }}">
                     @error('nama_tim')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -51,7 +56,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="name" class="form-label">Nama Pelatih / Coach</label>
-                    <input class="form-control @error('nama_pelatih') is-invalid @enderror form-control-sm" id="name" name="nama_pelatih" type="text" value="{{ old('nama_pelatih') }}">
+                    <input class="form-control @error('nama_pelatih') is-invalid @enderror form-control-sm" id="name" name="nama_pelatih" type="text" value="{{ $tim->nama_pelatih }}">
                     @error('nama_pelatih')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -60,7 +65,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="name" class="form-label">Kategori Usia</label>
-                    <input class="form-control @error('kategori_usia') is-invalid @enderror form-control-sm" id="name" name="kategori_usia" type="text" value="{{ old('kategori_usia') }}">
+                    <input class="form-control @error('kategori_usia') is-invalid @enderror form-control-sm" id="name" name="kategori_usia" type="text" value="{{ $tim->kategori_usia }}">
                     @error('kategori_usia')
                       <div class="invalid-feedback">
                         {{ $message }}

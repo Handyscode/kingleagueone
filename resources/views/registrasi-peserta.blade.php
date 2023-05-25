@@ -51,7 +51,12 @@
                   </div>
                   <div class="mb-3">
                     <label for="asal_tim" class="form-label">Asal Tim</label>
-                    <input class="form-control @error('asal_tim') is-invalid @enderror form-control-sm" id="asal_tim" name="asal_tim" type="text" value="{{ old('asal_tim') }}">
+                    <select name="asal_tim" id="asal_tim" class="form-control @error('asal_tim') is-invalid @enderror form-control-sm">
+                      <option value="">--- Pilih Asal Tim Peserta ---</option>
+                      @foreach ($tims as $tim)
+                        <option value="{{ $tim->id_tim }}">{{ $tim->nama_tim }}</option>
+                      @endforeach
+                    </select>
                     @error('asal_tim')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -78,7 +83,12 @@
                   </div>
                   <div class="mb-3">
                     <label for="posisi" class="form-label">Posisi</label>
-                    <input class="form-control @error('posisi') is-invalid @enderror form-control-sm" id="posisi" name="posisi" type="text" value="{{ old('posisi') }}">
+                    <select name="posisi" id="posisi" class="form-control @error('posisi') is-invalid @enderror form-control-sm">
+                      <option value="">--- Pilih Posisi Peserta ---</option>
+                      @foreach ($posisis as $posisi)
+                          <option value="{{ $posisi->id_posisi }}">{{ $posisi->nama_posisi . ' ' . '('.$posisi->kode_posisi.')' }}</option>
+                      @endforeach
+                    </select>
                     @error('posisi')
                       <div class="invalid-feedback">
                         {{ $message }}

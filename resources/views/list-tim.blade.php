@@ -14,13 +14,13 @@
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">List Peserta</h1>
+          <h1 class="h3 mb-0 text-gray-800">List Tim</h1>
         </div>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">List Peserta</h6>
+                <h6 class="m-0 font-weight-bold text-primary">List Tim</h6>
             </div>
             <div class="mx-3">
               @if (session('Success'))
@@ -35,79 +35,55 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Photo</th>
-                                <th>Nama Peserta</th>
-                                <th>Asal Tim</th>
+                                <th>Logo Tim</th>
+                                <th>Nama Tim</th>
+                                <th>Nama Pelatih</th>
                                 <th>Kategori Usia</th>
-                                <th>No Punggung</th>
-                                <th>Posisi</th>
+                                <th>Jumlah Pertandingan</th>
+                                <th>Jumlah Poin</th>
                                 @if (Auth::user()->role == 'admin')
-                                  <th>Foto KK</th>
-                                  <th>Foto Akte</th>
-                                  <th>Foto Ijazah</th>
-                                @endif
-                                <th>Tanggal Daftar</th>
-                                @if (Auth::user()->role == 'admin')
-                                  <th>Action</th>
+                                <th>Actions</th>
                                 @endif
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                               <th>No</th>
-                              <th>Photo</th>
-                              <th>Nama Peserta</th>
-                              <th>Asal Tim</th>
+                              <th>Logo Tim</th>
+                              <th>Nama Tim</th>
+                              <th>Nama Pelatih</th>
                               <th>Kategori Usia</th>
-                              <th>No Punggung</th>
-                              <th>Posisi</th>
+                              <th>Jumlah Pertandingan</th>
+                              <th>Jumlah Poin</th>
                               @if (Auth::user()->role == 'admin')
-                                <th>Foto KK</th>
-                                <th>Foto Akte</th>
-                                <th>Foto Ijazah</th>
-                              @endif
-                              <th>Tanggal Daftar</th>
-                              @if (Auth::user()->role == 'admin')
-                                <th>Action</th>
+                              <th>Actions</th>
                               @endif
                             </tr>
                         </tfoot>
                         <tbody>
-                          @foreach ($pesertas as $p => $peserta)                              
+                          @foreach ($tims as $p => $tim)                              
                             <tr>
                               <td>
                                 {{ $p+1 }}
                               </td>
                               <td>
-                                <img src="{{ asset('storage/'. $peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
+                                <img src="{{ asset('storage/'.$tim->logo_tim) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
                               </td>
-                              <td>{{ $peserta->nama }}</td>
-                              <td>{{ $peserta->tim->nama_tim }}</td>
-                              <td>{{ $peserta->kategori_usia }}</td>
-                              <td>{{ $peserta->no_punggung }}</td>
-                              <td>{{ $peserta->posisi->nama_posisi . ' ' . '('.$peserta->posisi->kode_posisi.')' }}</td>
-                              @if (Auth::user()->role == 'admin')
-                                <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
-                                </td>
-                                <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
-                                </td>
-                                <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_ijazah) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
-                                </td>
-                              @endif
-                              <td>{{ date('d M Y', strtotime($peserta->tgl_daftar)); }}</td>
+                              <td>{{ $tim->nama_tim }}</td>
+                              <td>{{ $tim->nama_pelatih }}</td>
+                              <td>{{ $tim->kategori_usia }}</td>
+                              <td>{{ $tim->jumlah_pertandingan }}</td>
+                              <td>{{ $tim->jumlah_poin }}</td>
                               @if (Auth::user()->role == 'admin')
                                 <td>
                                   <div class="actionBtn d-flex align-items-center justify-content-center">
                                     <div class="editBtn">
-                                      <a href="/list-peserta/edit-peserta/{{ $peserta->id_peserta }}" class="btn btn-secondary text-white"><i class="fa-solid fa-pencil"></i></a>
+                                      <a href="/list-tim/edit-tim/{{ $tim->id_tim }}" class="btn btn-secondary text-white"><i class="fa-solid fa-pencil"></i></a>
                                     </div>
                                     <div class="deleteBtn ml-3">
-                                      <form action="/list-peserta/delete-peserta/{{ $peserta->id_peserta }}" method="post" id="deleteForm">
+                                      <form action="/list-tim/delete-tim/{{ $tim->id_tim }}" method="post" id="deleteForm">
                                         @csrf
-                                        <input type="hidden" name="id_peserta">
+                                        <input type="hidden" name="id_tim">
                                         <a href="#" class="btn btn-danger text-white" onclick="deleteBtn()"><i class="fa-solid fa-trash"></i></a>
                                       </form>
                                     </div>
