@@ -69,6 +69,14 @@ class PagesController extends Controller
         $jadwalPertandingan = JadwalPertandingan::all();
         return view('jadwal-pertandingan', ['jadwalPertandingan' => $jadwalPertandingan]);
     }
+    
+    public function detailPertandingan($id){
+        $pertandingan = JadwalPertandingan::where('id_pertandingan', $id)->first();
+        $pesertaHome = Peserta::where('id_tim', $pertandingan->id_tim_home)->get(['nama', 'no_punggung', 'id_posisi', 'photo']);
+        $pesertaAway = Peserta::where('id_tim', $pertandingan->id_tim_away)->get(['nama', 'no_punggung', 'id_posisi', 'photo']);
+        return view('detail-pertandingan', ['pertandingan' => $pertandingan, 'pesertaHome' => $pesertaHome, 'pesertaAway' => $pesertaAway]);
+    }
+
     public function tambahPertandingan(){
         $tims = DB::table('tims')->get();
         return view('tambah-pertandingan', ['tims' => $tims]);

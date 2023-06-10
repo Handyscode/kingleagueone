@@ -28,7 +28,7 @@
         @else
           <div class="row">
             @foreach ($jadwalPertandingan as $jadwal)
-              <div class="col-xl-3 col-md-6 mb-4">
+              <div class="col-xl-4 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="top">
@@ -51,7 +51,7 @@
                         </div>
                       </div>
                       <div class="actionBtn w-100 mt-3">
-                        <a href="" class="btn btn-primary text-white w-100"><i class="fa-solid fa-eye me-2"></i> Lihat Detail</a>
+                        <a href="/jadwal-pertandingan/detail-pertandingan/{{ $jadwal->id_pertandingan }}" class="btn btn-primary text-white w-100"><i class="fa-solid fa-eye me-2"></i> Lihat Detail</a>
                       </div>
                     </div>
                   </div>

@@ -22,23 +22,26 @@ class TimController extends Controller
           'kategori_usia' => 'required'
         ]);
 
-      $logoTim = Storage::disk('public')->put('logo-tim', $request->file('logoTim'));
-
+        
       $now = Carbon::now()->setTimezone('Asia/Jakarta')->isoFormat('Y-MM-D');
       $lastTimID = DB::table('tims')->select('id_tim')->orderBy('id_tim', 'desc')->first();
       // dd($lastTimID);
       if ($lastTimID == null) {
           $timID = 'TIM' . "001";
       } else {
-          $lastIncrement = substr($lastTimID->id_tim, -3);
-          $timID = 'TIM' . str_pad($lastIncrement + 1, 3, 0, STR_PAD_LEFT);
+        $lastIncrement = substr($lastTimID->id_tim, -3);
+        $timID = 'TIM' . str_pad($lastIncrement + 1, 3, 0, STR_PAD_LEFT);
       }
+      $logoTim = $request->file('logoTim');
+      $logoTimPath = public_path('/logoTim');
+      $extensionLogo = $logoTim->getClientOriginalExtension();
+      $logoName = Carbon::now()->setTimezone('Asia/Jakarta')->isoFormat('YMMD') . $timID . '-logo' . '.' . $extensionLogo;
 
       Tim::create([
           'id_tim' => $timID,
           'nama_tim' => $request->nama_tim,
           'nama_pelatih' => $request->nama_pelatih,
-          'logo_tim' => $logoTim,
+          'logo_tim' => $logoName,
           'kategori_usia' => $request->kategori_usia,
           'jumlah_pertandingan' => 0,
           'jumlah_poin' => 0,
@@ -59,7 +62,7 @@ class TimController extends Controller
       $logoTim = $request->file('logoTim');
       
       if ($logoTim) {
-          $rules['logoTim'] = 'required|image';
+        $rules['logoTim'] = 'required|image';
       }
       
       $validated = $request->validate($rules);

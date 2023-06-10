@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/registrasi-tim', [PagesController::class, 'registrasiTim'])->name('registrasiTim');
   Route::post('/registrasi-tim', [TimController::class, 'store'])->name('registrasiTim.store');
   Route::get('/jadwal-pertandingan', [PagesController::class, 'jadwalPertandingan'])->name('jadwalPertandingan');
+  Route::get('/jadwal-pertandingan/detail-pertandingan/{id}', [PagesController::class, 'detailPertandingan'])->name('jadwalPertandingan.detailPertandingan');
   Route::get('/jadwal-pertandingan/tambah-pertandingan', [PagesController::class, 'tambahPertandingan'])->name('jadwalPertandingan.tambah-pertandingan');
   Route::post('/jadwal-pertandingan/tambah-pertandingan', [JadwalPertandinganController::class, 'store'])->name('jadwalPertandingan.store-pertandingan');
   Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

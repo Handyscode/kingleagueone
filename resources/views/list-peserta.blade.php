@@ -79,7 +79,7 @@
                                 {{ $p+1 }}
                               </td>
                               <td>
-                                <img src="{{ asset('storage/'. $peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
+                                <img src="{{ asset('photo/'. $peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
                               </td>
                               <td>{{ $peserta->nama }}</td>
                               <td>{{ $peserta->tim->nama_tim }}</td>
@@ -88,13 +88,13 @@
                               <td>{{ $peserta->posisi->nama_posisi . ' ' . '('.$peserta->posisi->kode_posisi.')' }}</td>
                               @if (Auth::user()->role == 'admin')
                                 <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
+                                  <img src="{{ asset('fotoKK/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
                                 </td>
                                 <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
+                                  <img src="{{ asset('fotoAkte/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
                                 </td>
                                 <td>
-                                  <img src="{{ asset('storage/'.$peserta->foto_ijazah) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
+                                  <img src="{{ asset('fotoIjazah/'.$peserta->foto_ijazah) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
                                 </td>
                               @endif
                               <td>{{ date('d M Y', strtotime($peserta->tgl_daftar)); }}</td>
@@ -105,10 +105,10 @@
                                       <a href="/list-peserta/edit-peserta/{{ $peserta->id_peserta }}" class="btn btn-secondary text-white"><i class="fa-solid fa-pencil"></i></a>
                                     </div>
                                     <div class="deleteBtn ml-3">
-                                      <form action="/list-peserta/delete-peserta/{{ $peserta->id_peserta }}" method="post" id="deleteForm">
+                                      <form action="/list-peserta/delete-peserta/{{ $peserta->id_peserta }}" method="post" id="deleteForm" class="deleteForm">
                                         @csrf
-                                        <input type="hidden" name="id_peserta">
-                                        <a href="#" class="btn btn-danger text-white" onclick="deleteBtn()"><i class="fa-solid fa-trash"></i></a>
+                                        <input type="hidden" name="id_peserta" value="{{ $peserta->id_peserta }}">
+                                        <a class="btn btn-danger text-white" onclick="deleteBtn(this)"><i class="fa-solid fa-trash"></i></a>
                                       </form>
                                     </div>
                                   </div>
@@ -143,7 +143,7 @@
   <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
   <script src="sweetalert2.all.min.js"></script>
   <script>
-    function deleteBtn() {
+    function deleteBtn(e) {
       Swal.fire({
         title: 'Anda yakin ingin menghapus data?',
         text: "Data yang telah dihapus tidak dapat diubah kembali!",
@@ -155,8 +155,7 @@
         confirmButtonText: 'Hapus Data'
       }).then((result) => {
         if (result.isConfirmed) {
-          form = document.querySelector('#deleteForm')
-          form.submit()
+          e.parentElement.submit()
         }
       })
     }

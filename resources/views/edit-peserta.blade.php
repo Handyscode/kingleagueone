@@ -42,7 +42,7 @@
                     @enderror
                     <div class="images mt-3">
                       <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
+                      <img src="{{ asset('photo/'.$peserta->photo) }}" alt="" class="img-preview img-fluid" width="75" id="photoPreview">
                     </div>
                   </div>
                   <div class="mb-3">
@@ -110,7 +110,7 @@
                     @enderror
                     <div class="images mt-3">
                       <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
+                      <img src="{{ asset('fotoKK/'.$peserta->foto_kk) }}" alt="" class="img-preview img-fluid" width="75" id="KKPreview">
                     </div>
                   </div>
                   <div class="mb-3">
@@ -123,7 +123,7 @@
                     @enderror
                     <div class="images mt-3">
                       <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
+                      <img src="{{ asset('fotoAkte/'.$peserta->foto_akte) }}" alt="" class="img-preview img-fluid" width="75" id="aktePreview">
                     </div>
                   </div>
                   <div class="mb-3">
@@ -136,7 +136,7 @@
                     @enderror
                     <div class="images mt-3">
                       <p class="mb-0">Preview</p>
-                      <img src="{{ asset('storage/'.$peserta->foto_ijazah) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
+                      <img src="{{ asset('fotoIjazah/'.$peserta->foto_ijazah) }}" alt="" class="img-preview img-fluid" width="75" id="ijazahPreview">
                     </div>
                   </div>
                   <div class="actionBtn d-flex align-items-center justify-content-end">

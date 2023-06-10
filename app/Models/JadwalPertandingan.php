@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class JadwalPertandingan extends Model
 {
@@ -22,5 +23,10 @@ class JadwalPertandingan extends Model
     public function timAway(): HasMany
     {
         return $this->hasMany(Tim::class, 'id_tim', 'id_tim_away');
+    }
+    
+    public function livescore(): HasOne
+    {
+        return $this->hasOne(LiveScore::class, 'id_pertandingan', 'id_pertandingan');
     }
 }
